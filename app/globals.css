@@ -1,0 +1,217 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+
+  --color-lime: var(--lime);
+  --color-olive: var(--olive);
+  --color-olive-2: var(--olive-2);
+  --color-cream: var(--cream);
+  --color-sage: var(--sage);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  color-scheme: dark;
+
+  --olive: #262a1e;
+  --olive-2: #30351f;
+  --cream: #f4f4ed;
+  --lime: #d2ff00;
+  --sage: #a6ab94;
+  --ink-muted: #6b6f5e;
+
+  --background: var(--olive);
+  --foreground: #e7eadb;
+  --card: rgb(255 255 255 / 0.03);
+  --card-foreground: #e7eadb;
+  --popover: #1e2118;
+  --popover-foreground: #e7eadb;
+  --primary: var(--lime);
+  --primary-foreground: #1d2016;
+  --secondary: #30351f;
+  --secondary-foreground: #e7eadb;
+  --muted: #30351f;
+  --muted-foreground: var(--sage);
+  --accent: #30351f;
+  --accent-foreground: #e7eadb;
+  --destructive: #ff6a3d;
+  --border: rgb(231 234 219 / 0.12);
+  --input: rgb(231 234 219 / 0.15);
+  --ring: var(--lime);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  ::selection {
+    background: var(--lime);
+    color: #1d2016;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@utility topo-dark {
+  background-color: var(--olive);
+  background-image: url('/images/topo-dark.png');
+  background-size: cover;
+  background-position: center;
+}
+
+@utility topo-light {
+  background-color: var(--cream);
+  background-image: url('/images/topo-light.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Small bold caption used for labels, like editorial photo credits */
+@utility caption {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+@utility glass-olive {
+  background: linear-gradient(180deg, rgb(231 234 219 / 0.06), rgb(231 234 219 / 0.015));
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgb(231 234 219 / 0.14);
+}
+
+@utility glass-cream {
+  background: rgb(255 255 255 / 0.45);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border: 1px solid rgb(38 42 30 / 0.14);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Lime intro screen that slides away, inspired by motorsport sites */
+@keyframes loader-out {
+  0%,
+  70% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+@keyframes loader-mark {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-8deg);
+  }
+  35%,
+  70% {
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+}
+.loader {
+  animation: loader-out 1.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+.loader-mark {
+  animation: loader-mark 1.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .loader {
+    display: none;
+  }
+  .animate-marquee,
+  .animate-pulse-dot {
+    animation: none;
+  }
+}
