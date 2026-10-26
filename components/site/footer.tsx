@@ -15,7 +15,7 @@ export function Footer() {
     <footer id="autor" aria-labelledby="autor-title" className="topo-dark relative overflow-hidden px-4 pt-32 md:px-5 md:pt-48">
       <Reveal>
         <p className="caption flex items-center gap-2 text-sage">
-          <span className="text-lime">04</span>
+          <span className="text-lime">05</span>
           <span aria-hidden="true">/</span>
           Autor
         </p>

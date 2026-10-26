@@ -8,6 +8,7 @@ import { BrandMark, BrandWordmark } from './brand'
 const links = [
   { href: '#projeto', label: 'O Projeto' },
   { href: '#arquitetura', label: 'Arquitetura' },
+  { href: '#vista-explodida', label: 'Vista explodida' },
   { href: '#componentes', label: 'Componentes' },
   { href: '#autor', label: 'Autor' },
 ]

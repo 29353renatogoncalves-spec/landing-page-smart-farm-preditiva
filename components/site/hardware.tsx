@@ -72,7 +72,7 @@ export function Hardware() {
     <section id="componentes" aria-labelledby="componentes-title" className="topo-light relative px-4 py-32 text-olive md:px-5 md:py-48">
       <SectionHeading
         id="componentes-title"
-        index="03"
+        index="04"
         eyebrow="Hardware & Tecnologias"
         tone="light"
         lines={[{ text: 'Os componentes' }, { text: 'do sistema', serif: true }]}
